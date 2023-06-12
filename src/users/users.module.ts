@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 import { UsersService } from './users.service';
-import { UsersController } from './users.controller';
+import { UsersController } from 'src/users/users.controller';
 import { ConfigModule,ConfigService } from '@nestjs/config';
 import { Users, UsersSchemma } from './entities/users.schema';
 import { PassportModule } from '@nestjs/passport';
@@ -24,7 +24,7 @@ import { JwtStrategy } from './entities/jwt.strategy';
         return{
           secret: config.get<string>('JWT_SECRET'),
           signOptions: {
-            expiresIn: '1h',
+            expiresIn: config.get<string>('EXPIRES_IN'),
           }
         }
       }
