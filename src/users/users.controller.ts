@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards, UnauthorizedException, Request } from '@nestjs/common';
 import { UsersService } from 'src/users/users.service';
 import { LoginUsersDto } from './dto/login-users.dto';
@@ -5,17 +6,28 @@ import { RegisterUsersDto } from './dto/register-users.dto';
 import { get } from 'http';
 import { AuthGuard } from './entities/auth.guard';
 import { User } from './entities/user.entity';
+=======
+import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { UsersService } from 'src/users/users.service';
+import { LoginUsersDto } from './dto/login-users.dto';
+import { RegisterUsersDto } from './dto/register-users.dto';
+>>>>>>> 5c1bfa989b0e5d9f1b2f886af28f846b87b0d57d
 
 @Controller('/users')
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
   @Post('/auth/register')
+<<<<<<< HEAD
   register(@Body() registerUsersDto: RegisterUsersDto): Promise<{token: { AccessToken: string, RefreshToken: string }, user: { email: string, name: string } }> {
+=======
+  register(@Body() registerUsersDto: RegisterUsersDto): Promise<{ token : string}> {
+>>>>>>> 5c1bfa989b0e5d9f1b2f886af28f846b87b0d57d
     return this.usersService.Register(registerUsersDto);
   }
 
   @Post('/auth/login')
+<<<<<<< HEAD
   login(@Body() loginUsersDto: LoginUsersDto): Promise<{token: { AccessToken: string, RefreshToken: string }, user: { email: string, name: string } }> {
     return this.usersService.Login(loginUsersDto);
   }
@@ -33,4 +45,9 @@ export class UsersController {
       throw new UnauthorizedException('Invalid Token')
     }
   }
+=======
+  login(@Body() loginUsersDto: LoginUsersDto): Promise<{ token : string}> {
+    return this.usersService.Login(loginUsersDto);
+  }
+>>>>>>> 5c1bfa989b0e5d9f1b2f886af28f846b87b0d57d
 }
